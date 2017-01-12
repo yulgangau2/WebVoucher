@@ -135,7 +135,7 @@ $row2 = mysqli_fetch_assoc($date_query);
                             if($row['status']== 'completed'){
                     echo '<td> <span class="badge complete">'.$row['status'].'</span></td>';
                             }else if ($row['status']== 'pending'){
-                    echo '<td><a href="UpdateStatus.php?id='.$user.'&subject='.$subject.'&num='.$numrow.'"><span class="badge public ">'.$row['status'].'</span></a></td>';
+                    echo '<td><a href="UpdateStatus.php?id='.$row['code'].'&subject='.$subject.'&num='.$numrow.'"><span class="badge public ">'.$row['status'].'</span></a></td>';
                             }else{
                     echo '<td> <span class="badge expired">'.$row['status'].'</span></td>';
                             }
