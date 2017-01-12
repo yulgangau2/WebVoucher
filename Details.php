@@ -76,7 +76,7 @@ $row2 = mysqli_fetch_assoc($date_query);
                             if ($date <= $row2['exp_date']){
                             echo '<td class="right"> <span class="badge public ">Activate</span></td>';
                             }else {
-                            echo '<td class="right"> <span class="badge  ">Expired</span></td>';
+                            echo '<td class="right"> <span class="badge expired">Expired</span></td>';
                             }
                             ?>
                                 </tr>
@@ -128,14 +128,14 @@ $row2 = mysqli_fetch_assoc($date_query);
 
 ?>
                         <tr>
-                            <td>572110152 </td>
+                            <td><?php echo $user;?> </td>
                             <td class="hidden-xs"><?php echo $q_stud_row['fname_th'];?></td>
                             <td class="hidden-xs"><?php echo $q_stud_row['sname_th'];?></td>
  <?php
                             if($row['status']== 'completed'){
                     echo '<td> <span class="badge complete">'.$row['status'].'</span></td>';
                             }else if ($row['status']== 'pending'){
-                    echo '<td><a href="#"><span class="badge public ">'.$row['status'].'</span></a></td>';
+                    echo '<td><a href="UpdateStatus.php?id='.$user.'&subject='.$subject.'&num='.$numrow.'"><span class="badge public ">'.$row['status'].'</span></a></td>';
                             }else{
                     echo '<td> <span class="badge expired">'.$row['status'].'</span></td>';
                             }

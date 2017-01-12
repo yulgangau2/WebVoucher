@@ -161,7 +161,7 @@ $date = date("Y-m-d");
                             if ($date <= $row['exp_date']){
                             echo '<td class="right"> <span class="badge public ">Activate</span></td>';
                             }else {
-                            echo '<td class="right"> <span class="badge  ">Expired</span></td>';
+                            echo '<td class="right"> <span class="badge expired">Expired</span></td>';
                             }
                             ?>
                                         </tr>

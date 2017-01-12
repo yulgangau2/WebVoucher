@@ -270,6 +270,9 @@ span.badge.public.list {
   margin-top:20px;
 }
 
+span.badge.expired.list {
+  margin-top:20px;
+}
 h3.title {
   margin-left:15px;
 }
@@ -337,11 +340,23 @@ span.badge.active {
   font-size:1.1em;
 }
 
+
+
 span.badge.inactive {
   padding:10px 20px;
   background-color:#f44336;
   font-size:1.1em;
 }
+
+.expired{
+  background-color:#f44336;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.expired
 
 span.badge.his-studying {
   padding:10px 20px;

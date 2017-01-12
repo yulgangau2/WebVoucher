@@ -169,7 +169,7 @@ include ("connectdb.php");
                             if ($date <= $row['exp_date']){
                             echo '<td> <span class="badge public list">Activate</span></td>';
                             }else {
-                            echo '<td> <span class="badge  list">Expired</span></td>';
+                            echo '<td> <span class="badge expired list">Expired</span></td>';
                             }
                             ?>
 
