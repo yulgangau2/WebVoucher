@@ -59,6 +59,9 @@ include ("connectdb.php");
 <?php
 $query=mysqli_query($voucher,"SELECT * From student_has_voucher where voucher_id = '$subject'");
 $row = mysqli_fetch_assoc($query);
+$date = date("Y-m-d");
+$date_query = mysqli_query($voucher,"SELECT * FROM voucher where id = '$subject' ");
+$row2 = mysqli_fetch_assoc($date_query);
 ?>
                     <h2 class="text-center bold">ENGLISH @ CAMT'59</h2>
                     <div class="table-responsive">
@@ -69,15 +72,13 @@ $row = mysqli_fetch_assoc($query);
                             <tbody>
                                 <tr>
                                     <td class="left">Status </td>
- <?php
-                            if($row['status']== 'completed'){
-                        echo '<td> <span class="badge complete list">'.$row['status'].'</span></td>';
-                            }else if ($row['status']== 'pending'){
-                        echo '<td><a href="#"><span class="badge public">'.$row['status'].'</span></a></td>';
-                            }else{
-                        echo '<td> <span class="badge expired list">'.$row['status'].'</span></td>';
+ <?php 
+                            if ($date <= $row2['exp_date']){
+                            echo '<td class="right"> <span class="badge public ">Activate</span></td>';
+                            }else {
+                            echo '<td class="right"> <span class="badge  ">Expired</span></td>';
                             }
-?>
+                            ?>
                                 </tr>
                                 <tr>
                                     <td class="left">Enrollment </td>
@@ -85,11 +86,17 @@ $row = mysqli_fetch_assoc($query);
                                 </tr>
                                 <tr>
                                     <td class="left">Release Date</td>
-                                    <td class="right">14 July 2016</td>
+                                    <td class="right"><?php 
+                                    $show_date = explode(" ",$row2['date_created']);
+                                    echo $show_date[0];
+                                    ;?></td>
                                 </tr>
                                 <tr>
                                     <td class="left">Expired Date</td>
-                                    <td class="right">14 July 2017</td>
+                                    <td class="right"><?php 
+                                    $show_date = explode(" ",$row2['exp_date']);
+                                    echo $show_date[0];
+                                    ?></td>
                                 </tr>
                             </tbody>
                         </table>

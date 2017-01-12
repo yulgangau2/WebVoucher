@@ -21,6 +21,10 @@ include ("connectdb.php");
 </head>
 
 <body>
+<?php
+$date = date("Y-m-d");
+?>
+
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 firstcard">
             <div class="row">
@@ -153,7 +157,13 @@ include ("connectdb.php");
                                     <tbody>
                                         <tr>
                                             <td class="left">Status </td>
-                                            <td class="right"> <span class="public badge">Public </span></td>
+                            <?php 
+                            if ($date <= $row['exp_date']){
+                            echo '<td class="right"> <span class="badge public ">Activate</span></td>';
+                            }else {
+                            echo '<td class="right"> <span class="badge  ">Expired</span></td>';
+                            }
+                            ?>
                                         </tr>
                                         <tr>
                                             <td class="left">Enrolled</td>

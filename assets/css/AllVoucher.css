@@ -74,6 +74,8 @@ h1.title {
   border-width:1px;
 }
 
+
+
 .pending {
   transition:0.25s ease-in-out;
   width:100px;

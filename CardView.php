@@ -21,6 +21,12 @@ include ("connectdb.php");
 </head>
 
 <body>
+<?php
+$date = date("Y-m-d");
+
+
+?>
+
     <div class="col-md-12 hidden" id="YellowLine">
         <p>Paragraph</p>
     </div>
@@ -156,7 +162,14 @@ include ("connectdb.php");
                             <tbody>
                                 <tr>
                                     <td class="left">Status </td>
-                                    <td class="right"> <span class="badge public">Public </span></td>
+                            <?php 
+                            if ($date <= $row['exp_date']){
+                            echo '<td class="right"> <span class="badge public ">Activate</span></td>';
+                            }else {
+                            echo '<td class="right"> <span class="badge  ">Expired</span></td>';
+                            }
+                            ?>
+
                                 </tr>
                                 <tr>
                                     <td class="left">Enrollment </td>
@@ -164,7 +177,10 @@ include ("connectdb.php");
                                 </tr>
                                 <tr>
                                     <td class="left">Expired Date</td>
-                                    <td class="right"><?php echo $row['exp_date'];?></td>
+                                    <td class="right"><?php 
+                                    $show_date = explode(" ",$row['exp_date']);
+                                    echo $show_date[0];
+                                    ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -181,6 +197,7 @@ include ("connectdb.php");
 
 <?php
 }
+
 ?>
 
     <script src="assets/js/jquery.min.js"></script>

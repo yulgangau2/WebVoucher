@@ -21,6 +21,10 @@ include ("connectdb.php");
 </head>
 
 <body>
+  <?php
+ $date = date("Y-m-d");
+?>
+
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 firstcard">
             <div class="row">
@@ -160,12 +164,23 @@ include ("connectdb.php");
                             <td class="hidden-sm">
                                 <p class="list-margin"><?php echo $num_rows;?> </p>
                             </td>
-                            <td> <span class="badge public list">Public </span></td>
+
+                            <?php 
+                            if ($date <= $row['exp_date']){
+                            echo '<td> <span class="badge public list">Activate</span></td>';
+                            }else {
+                            echo '<td> <span class="badge  list">Expired</span></td>';
+                            }
+                            ?>
+
+
 <?php
                             echo '<td> <a class="btn btn-primary bold list-margin" role="button" href="Details.php?subject='.$row['id'].'&num='.$num_rows.'">More Details</a></td>
                         </tr>';
    
 }
+
+
 ?>
                         </tr>
                     </tbody>
@@ -177,6 +192,14 @@ include ("connectdb.php");
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Countdown.js"></script>
+
+<?php 
+                            if ($date > $row['exp_date']){
+                            echo 'Expired';
+                             }else{
+                            echo 'Activate';
+                            }
+                            ?>
 </body>
 
 </html>
