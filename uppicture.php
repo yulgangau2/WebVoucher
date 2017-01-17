@@ -1,12 +1,14 @@
 <?php
-session_start(); 
-if (isset($_session['login'])){
-    header("location:login.php");
+session_start();
+if (!isset($_SESSION['login'])){
+   header("location:login.php");
+    
 }
 include ("connectdb.php");
 if (@$_GET['t']) {
 	$_SESSION['qdate'] =$_GET['t'];
 }
+
 
 
 	
@@ -55,9 +57,9 @@ $thumb_image_name = $thumb_image_prefix.$_SESSION['random_key'];     // New name
 
 
 $max_file = "3"; 							// Maximum file size in MB
-$max_width = "500";							// Max width allowed for the large image
-$thumb_width = "400";						// Width of thumbnail image
-$thumb_height = "400";						// Height of thumbnail image
+$max_width = "800";							// Max width allowed for the large image
+$thumb_width = "800";						// Width of thumbnail image
+$thumb_height = "450";						// Height of thumbnail image
 // Only one of these image types should be allowed for upload
 $allowed_image_types = array('image/pjpeg'=>"jpg",'image/jpeg'=>"jpg",'image/jpg'=>"jpg",'image/png'=>"png",'image/x-png'=>"png",'image/gif'=>"gif");
 $allowed_image_ext = array_unique($allowed_image_types); // do not change this
@@ -274,7 +276,9 @@ if (isset($_POST["upload_thumbnail"]) && strlen($large_photo_exists)>0) {
 	}
 	
 	
-	$imgpath = 'www.cyanizestore.com/web/upload_pic/'.$thumb_image_name.'.'.$imgType[1];
+	//$imgpath = 'www.cyanizestore.com/web/upload_pic/'.$thumb_image_name.'.'.$imgType[1];
+
+	$imgpath = 'upload_pic/'.$thumb_image_name.'.'.$imgType[1];
 		
 
 

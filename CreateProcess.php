@@ -14,6 +14,8 @@ include ("connectdb.php");
 	$expDat = $_POST['date'];
 	$timenow = $_POST['xxx'];
 	$nowDate = date("Y-m-d");
+	$academic_year = $_POST['academic'];
+
 
 	$expDate = $expDat.' 23.59.59';
 	$date = $nowDate.' '.$timenow;
@@ -21,7 +23,7 @@ include ("connectdb.php");
 
 	
 
-	$insert = mysqli_query($voucher,"INSERT INTO voucher  VALUES ('','$name','$price','$expDate','','','$date','')") or die(mysql_error());
+	$insert = mysqli_query($voucher,"INSERT INTO voucher  VALUES ('','$name','$price','$expDate','$academic_year','','$date','')") or die(mysql_error());
 
 	
 

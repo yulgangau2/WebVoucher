@@ -1,15 +1,14 @@
 <?php
-session_start();
+    session_start();
 if (!isset($_SESSION['login'])){
    header("location:login.php");
     
 }
-
     date_default_timezone_set("Asia/Bangkok");
+    include ("connectdb.php");
 
-if (isset($_session['login'])){
-    header("location:login.php");
-}
+
+    $id = $_GET['id'];
 
 ?>
 
@@ -57,55 +56,51 @@ button.btn.btn-default.btn-block.create-next {
 </head>
 
 <body>
+
+<?php 
+	
+	$query = mysqli_query($voucher,"SELECT * FROM voucher where id = '$id' ");
+	$row = mysqli_fetch_assoc($query);
+?>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 margintop card">
             <div class="row">
                 <div class="col-md-12">
 
-                <form action="CreateProcess.php" method="post">
-                    <h1>Create Voucher</h1></div>
+                <form action="UpdateProcess.php" method="post">
+                    <h1>Update Voucher</h1></div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
     <h3>Voucher Name</h3>
-    <input type="text" name="name" class="form-control" id="text-input" />
+    <input type="text" name="name" class="form-control" id="text-input" value="<?php echo $row['description']; ?>" />
 </div>
 <div class="form-group">
     <h3>Price</h3>
-    <input type="text" name="price" class="form-control" id="text-input" />
+    <input type="text" name="price" class="form-control" id="text-input" value="<?php echo $row['price']; ?>" />
 </div>
 <div class="form-group">
     <h3>Expired Date</h3>
-    <input type="date" name="date" />
-        <?php
-            $a=date("h:i:s");
-        ?>
-     <input type="hidden" name="xxx" value="<?php  echo $a; ?>">
+    <input type="date" name="date" value="<?php 
+    $date = explode(" ", $row['exp_date']);
+    echo $date[0]; ?>" />
+      
+     <input type="hidden" name="id" value="<?php  echo $id; ?>">
 </div>
+
 <div class="form-group">
     <h3>Academic Year</h3>
-    <input type="text" name="academic" class="form-control" id="text-input" />
+    <input type="text" name="academic" class="form-control" id="text-input" value="<?php echo $row['academic_year']; ?>" />
 </div>
 
-
-
-
-  <!--  <h3>Voucher Picture</h3>
-<div class="form-group">
-
-    <span class="btn btn-default btn-file">
-        Browse <input type="file">
-    </span>
-</div>
-!-->
 
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 col-xs-6 col-xs-offset-6">
-                    <button type="submit" class="btn btn-block create-next">Next</button>
+                    <button type="submit" class="btn btn-block create-next">Update</button>
                 </div>
             </div>
         </div>

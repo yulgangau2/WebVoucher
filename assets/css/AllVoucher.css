@@ -38,6 +38,11 @@ table {
   font-size:1.25em;
 }
 
+.CreV:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 div.firstcard {
   margin-top:75px;
   padding:10px;
@@ -309,7 +314,7 @@ th.th2 {
   width:50%;
 }
  
-.CreV {
+.CreV:hover {
   text-decoration: none;
   color: #ffffff;
 }
@@ -415,4 +420,6 @@ img.logo {
 .login-clean form:hover {
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 

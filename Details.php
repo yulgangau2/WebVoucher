@@ -1,8 +1,10 @@
 <?php
 session_start();
-if (isset($_session['login'])){
-    header("location:login.php");
+if (!isset($_SESSION['login'])){
+   header("location:login.php");
+    
 }
+
 include ("connectdb.php");
 ?>
 

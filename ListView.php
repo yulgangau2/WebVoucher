@@ -1,8 +1,11 @@
 <?php
 session_start();
-if (isset($_session['login'])){
-    header("location:login.php");
+if (!isset($_SESSION['login'])){
+   header("location:login.php");
+    
 }
+
+
 include ("connectdb.php");
 
 
@@ -22,6 +25,15 @@ include ("connectdb.php");
     <link rel="stylesheet" href="assets/css/user.css">
     <link rel="stylesheet" href="assets/css/AllVoucher.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+
+<style>
+    .CreV:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+</style>
+   
 </head>
 
 <body>
@@ -153,7 +165,7 @@ include ("connectdb.php");
                     <tbody>
                      <?php
 
-    $get=mysqli_query($voucher,"SELECT * FROM voucher");
+    $get=mysqli_query($voucher,"SELECT * FROM voucher ORDER BY date_created DESC");
 
                      while($row=mysqli_fetch_assoc($get)){
     $count = mysqli_query($voucher,"SELECT * From student_has_voucher where student_has_voucher.voucher_id = ".$row['id']);
