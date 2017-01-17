@@ -72,7 +72,7 @@ $date = date("Y-m-d");
             </li>
         </ul>
     </div>
-    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#createvoucher">Create Voucher</button>
+    <button class="btn btn-success" type="button"   data-toggle="modal" ><a href="Create.php" class="CreV"> Create Voucher</a> </button>
 <!-- /button -->
 
 <!-- Modal -->
@@ -151,9 +151,9 @@ $date = date("Y-m-d");
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-3 col-sm-10 col-xs-10 col-xs-offset-1 card">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><img src="https://udemy-images.udemy.com/course/750x422/62606_8221_7.jpg" class="img-responsive"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><img src="<?php echo $row['img'];   ?>" class="img-responsive"></div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-                    <h2 class="text-center bold">ENGLISH @ CAMT'59</h2>
+                    <h2 class="text-center bold"><?php echo $row['description'] ?> </h2>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

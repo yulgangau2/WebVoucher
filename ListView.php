@@ -4,7 +4,11 @@ if (isset($_session['login'])){
     header("location:login.php");
 }
 include ("connectdb.php");
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +71,7 @@ include ("connectdb.php");
             </li>
         </ul>
     </div>
-    <button class="btn btn-success" type="button"   data-toggle="modal" ><a href="CreateVoucher.php"> Create Voucher</a> </button>
+    <button class="btn btn-success" type="button"   data-toggle="modal" ><a href="Create.php" class="CreV"> Create Voucher</a> </button>
 <!-- /button -->
 
 <!-- Modal -->
@@ -157,9 +161,9 @@ include ("connectdb.php");
                          $row2=mysqli_fetch_assoc($count);
                     ?>
                         <tr>
-                            <td> <img src="https://udemy-images.udemy.com/course/750x422/62606_8221_7.jpg" class="list-img"></td>
+                            <td> <img src="<?php echo $row['img'];   ?>" class="list-img"></td>
                             <td>
-                                <p class="list-margin">ENGLISH @ CAMT'59 </p>
+                                <p class="list-margin"><?php echo $row['description'] ?> </p>
                             </td>
                             <td class="hidden-sm">
                                 <p class="list-margin"><?php echo $num_rows;?> </p>
@@ -171,6 +175,8 @@ include ("connectdb.php");
                             }else {
                             echo '<td> <span class="badge expired list">Expired</span></td>';
                             }
+
+                            
                             ?>
 
 
@@ -193,13 +199,7 @@ include ("connectdb.php");
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Countdown.js"></script>
 
-<?php 
-                            if ($date > $row['exp_date']){
-                            echo 'Expired';
-                             }else{
-                            echo 'Activate';
-                            }
-                            ?>
+
 </body>
 
 </html>

@@ -25,6 +25,7 @@ include ("connectdb.php");
 
 <?php
     $id = $_GET['id'];
+
 ?>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -51,6 +52,10 @@ include ("connectdb.php");
 <?php
 $student = mysqli_query($camt,"SELECT * FROM students where id ='$id'");
 $row = mysqli_fetch_assoc($student);
+
+
+
+
 ?>
                 <div class="col-lg-4 col-md-4 col-sm-4 margin-bottom-25"><img src="assets/img/Profile Pic.jpg" class="listview"></div>
                 <div class="col-lg-8 col-md-8 col-sm-8">
@@ -120,11 +125,17 @@ $row = mysqli_fetch_assoc($student);
 <?php  
 $history = mysqli_query($voucher,"SELECT * FROM student_has_voucher where student_id = '$id' ");
                         while($row = mysqli_fetch_assoc($history)){
+
+$v_id= $row['voucher_id'];
+$q =  mysqli_query($voucher,"SELECT * FROM voucher where id ='$v_id' ");
+$row3 = mysqli_fetch_assoc($q);
+
+
 ?>
                         <tr>
-                            <td> <img src="https://udemy-images.udemy.com/course/750x422/62606_8221_7.jpg" class="list-img"></td>
+                            <td> <img src="<?php echo $row3['img'] ?>" class="list-img"></td>
                             <td>
-                                <p class="list-margin his-list">ENGLISH @ CAMT'59 </p>
+                                <p class="list-margin his-list"><?php echo $row3['description'] ?> </p>
                             </td>
                             <td> <span class="badge his-studying">Studying </span></td>
                         </tr>

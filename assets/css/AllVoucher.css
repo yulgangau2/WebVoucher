@@ -15,6 +15,7 @@ span.detail {
 
 td.left {
   width:50%;
+  font-size: 0.8em;
   text-align:right;
   font-weight:bold;
 }
@@ -306,6 +307,11 @@ th.th1 {
 
 th.th2 {
   width:50%;
+}
+ 
+.CreV {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 th.th3 {

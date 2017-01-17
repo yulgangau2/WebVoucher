@@ -1,4 +1,17 @@
 <?php
+session_start(); 
+if (isset($_session['login'])){
+    header("location:login.php");
+}
+include ("connectdb.php");
+if (@$_GET['t']) {
+	$_SESSION['qdate'] =$_GET['t'];
+}
+
+
+	
+		$qdate = $_SESSION['qdate'];
+
 /*
 * Copyright (c) 2008 http://www.webmotionuk.com / http://www.webmotionuk.co.uk
 * "PHP & Jquery image upload & crop"
@@ -19,7 +32,7 @@
 *
 */
 error_reporting (E_ALL ^ E_NOTICE);
-session_start(); //Do not remove this
+//Do not remove this
 //only assign a new timestamp if the session variable is empty
 include ("connectdb.php");
 $des =$_POST['des'];
@@ -43,8 +56,8 @@ $thumb_image_name = $thumb_image_prefix.$_SESSION['random_key'];     // New name
 
 $max_file = "3"; 							// Maximum file size in MB
 $max_width = "500";							// Max width allowed for the large image
-$thumb_width = "100";						// Width of thumbnail image
-$thumb_height = "100";						// Height of thumbnail image
+$thumb_width = "400";						// Width of thumbnail image
+$thumb_height = "400";						// Height of thumbnail image
 // Only one of these image types should be allowed for upload
 $allowed_image_types = array('image/pjpeg'=>"jpg",'image/jpeg'=>"jpg",'image/jpg'=>"jpg",'image/png'=>"png",'image/x-png'=>"png",'image/gif'=>"gif");
 $allowed_image_ext = array_unique($allowed_image_types); // do not change this
@@ -61,6 +74,7 @@ foreach ($allowed_image_ext as $mime_type => $ext) {
 function resizeImage($image,$width,$height,$scale) {
 	list($imagewidth, $imageheight, $imageType) = getimagesize($image);
 	$imageType = image_type_to_mime_type($imageType);
+	$imgT = $_SESSION ['type'] = $imageType;
 	$newImageWidth = ceil($width * $scale);
 	$newImageHeight = ceil($height * $scale);
 	$newImage = imagecreatetruecolor($newImageWidth,$newImageHeight);
@@ -252,7 +266,23 @@ if (isset($_POST["upload_thumbnail"]) && strlen($large_photo_exists)>0) {
 	$cropped = resizeThumbnailImage($thumb_image_location, $large_image_location,$w,$h,$x1,$y1,$scale);
 	//$uppic = mysqli_query($voucher,"UPDATE voucher SET img='$thumb_image_name' where description ='$des'");
 	//Reload the page again to view the thumbnail
-	header("location:".$_SERVER["PHP_SELF"]);
+
+	$imgT = $_SESSION ['type'];
+	$imgType= explode("/",$imgT);
+	if($imgType[1] == 'jpeg'){
+		$imgType[1] = 'jpg';
+	}
+	
+	
+	$imgpath = 'www.cyanizestore.com/web/upload_pic/'.$thumb_image_name.'.'.$imgType[1];
+		
+
+
+	$update = mysqli_query($voucher,"UPDATE voucher SET img ='$imgpath' WHERE date_created ='$qdate' ");
+
+	//header("location:".$_SERVER["PHP_SELF"]);
+	header("location:CardView.php");
+
 	exit();
 }
 

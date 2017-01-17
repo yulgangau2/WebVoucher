@@ -54,15 +54,17 @@ include ("connectdb.php");
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-xs-10 col-xs-offset-1 card">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><img src="https://udemy-images.udemy.com/course/750x422/62606_8221_7.jpg" class="img-responsive thumbnail"></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-<?php
+
+    <?php
 $query=mysqli_query($voucher,"SELECT * From student_has_voucher where voucher_id = '$subject'");
 $row = mysqli_fetch_assoc($query);
 $date = date("Y-m-d");
 $date_query = mysqli_query($voucher,"SELECT * FROM voucher where id = '$subject' ");
 $row2 = mysqli_fetch_assoc($date_query);
 ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><img src="<?php echo $row2['img'];   ?>" class="img-responsive thumbnail"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+
                     <h2 class="text-center bold">ENGLISH @ CAMT'59</h2>
                     <div class="table-responsive">
                         <table class="table">
