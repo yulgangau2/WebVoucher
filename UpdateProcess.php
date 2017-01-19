@@ -18,6 +18,10 @@ $nowDat = date("Y-m-d");
 	$date = $expDat.' 23.59.59';
 
 	
-	$update= mysqli_query($voucher,"UPDATE voucher SET description = '$name', price= '$price' ,exp_date='$date' ,academic_year='$year',last_update='$nowDate' where id ='$id' ") or die(mysql_error());
+	$updateStudent_has_voucher = mysqli_query($voucher,"UPDATE student_has_voucher SET last_updated = '$nowDate' where voucher_id ='$id' ") or die(mysql_error());
 
-		header("location:CardView.php");
+	$updateVoucher= mysqli_query($voucher,"UPDATE voucher SET description = '$name', price= '$price' ,exp_date='$date' ,academic_year='$year',last_update='$nowDate' where id ='$id' ") or die(mysql_error());
+
+	
+
+		header("location:Edit.php");

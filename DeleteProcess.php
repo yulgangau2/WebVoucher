@@ -19,9 +19,22 @@ if (!isset($_SESSION['login'])){
 	
 	$id = $_GET['id'];
 
+
+	$query = mysqli_query($voucher,"SELECT * FROM student_has_voucher where voucher_id ='$id' ");
+	$query2 =mysqli_fetch_assoc($query);
+
+	if(isset($query2)){
+		$de = mysqli_query($voucher,"DELETE FROM student_has_voucher where voucher_id = '$id' ");
+
+		
+	}
+
+
 	$delete = mysqli_query($voucher,"DELETE FROM voucher where id ='$id'");
+
+ 	//header("location:Edit.php");
 ?>
 
-
+	
 </body>
 </html>

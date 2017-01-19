@@ -22,10 +22,16 @@ include ("connectdb.php");
 
 
 <style>
-    .CreV:hover {
+
+ .CreV  {
+    color: white;
+}
+
+.CreV:hover {
   text-decoration: none;
   color: #ffffff;
 }
+
 </style>
 </head>
 
@@ -137,10 +143,11 @@ $date = date("Y-m-d");
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav navbar-right">
+                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a href="#"><strong>OVERVIEW </strong></a></li>
                     <li role="presentation"><a href="CardView.php"><strong>ALL VOUCHER</strong></a></li>
                     <li role="presentation"><a href="#"><strong>STUDENT INFO</strong></a></li>
+                    <li role="presentation"><a href="Edit.php"><strong>EDIT VOUCHER</strong></a></li>
                     <li role="presentation"><a href="logout.php" class="page-scroll"><strong>LOG OUT</strong></a></li>
                 </ul>
             </div>

@@ -23,10 +23,16 @@ include ("connectdb.php");
 
 
 <style>
-    .CreV:hover {
+
+ .CreV  {
+    color: white;
+}
+
+.CreV:hover {
   text-decoration: none;
   color: #ffffff;
 }
+
 </style>
 </head>
 
@@ -137,6 +143,7 @@ $date = date("Y-m-d");
                     <li role="presentation"><a href="#"><strong>OVERVIEW </strong></a></li>
                     <li role="presentation"><a href="CardView.php"><strong>ALL VOUCHER</strong></a></li>
                     <li role="presentation"><a href="#"><strong>STUDENT INFO</strong></a></li>
+                    <li role="presentation"><a href="Edit.php"><strong>EDIT VOUCHER</strong></a></li>
                     <li role="presentation"><a href="logout.php" class="page-scroll"><strong>LOG OUT</strong></a></li>
                 </ul>
             </div>
